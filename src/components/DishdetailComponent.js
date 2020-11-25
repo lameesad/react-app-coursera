@@ -3,7 +3,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 
 class DishDetail extends Component {
 	render() {
-		const dish = this.props.selectedDish
+		const dish = this.props.dish
 		if(dish == null || dish == undefined) return (<div></div>)
 
 		return (
@@ -24,7 +24,7 @@ class DishDetail extends Component {
 							return (
 								<div key = {comment.id}>
 									<p>{comment.comment}</p>
-									<p>{`-- ${comment.author} , ${comment.date}`}</p>
+									<p>{`-- ${comment.author} , ${new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}`}</p>
 								</div>
 							)
 						})}			
