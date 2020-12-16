@@ -150,9 +150,9 @@ class CommentForm extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="feedback" md={12}>Your feedback</Label>
                                 <Col md={12}>
-                                <Control.text model=".comment" id="comment" name="comment" 
+                                <Control.textarea model=".comment" id="comment" name="comment" 
                                     resize="none"
-                                    rows="12" 
+                                    rows="6" 
                                     className="form-control" 
                                     validators={{
                                         required,
