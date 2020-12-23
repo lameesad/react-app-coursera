@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes';
-import { DISHES } from '../shared/dishes';
 import { baseUrl } from '../shared/baseUrl';
 
 export const addComment = (dishId, rating, author, comment) => ({
@@ -14,7 +13,6 @@ export const addComment = (dishId, rating, author, comment) => ({
 
 export const fetchDishes = () => (dispatch) => {
 
-    dispatch(ActionTypes.DISHES_LOADING(true));
 
      return fetch(baseUrl + 'dishes')
     .then(response => response.json())
@@ -36,18 +34,7 @@ export const addDishes = (dishes) => ({
     type: ActionTypes.ADD_DISHES,
     payload: dishes
 });
-
-. . .
-
-import { baseUrl } from '../shared/baseUrl';
-
-. . .
-
-    return fetch(baseUrl + 'dishes')
-    .then(response => response.json())
-    .then(dishes => dispatch(addDishes(dishes)));
     
-. . .
 
 
 export const fetchComments = () => (dispatch) => {    
