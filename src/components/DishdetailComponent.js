@@ -22,7 +22,7 @@ function RenderDish({ dish }) {
   else return <div></div>;
 }
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
   if (comments != null)
     return (
       <div className="col-12 col-md-5 m-1">
@@ -40,7 +40,7 @@ function RenderComments({ comments, addComment, dishId }) {
             </li>
           </ul>
         ))}
-        <CommentForm dishId={dishId} addComment={addComment} />
+        <CommentForm dishId={dishId} postComment={postComment} />
         
       </div>
     );
@@ -88,7 +88,7 @@ const Dishdetail = (props) => {
        
       
           <RenderComments comments={props.comments}
-          addComment={props.addComment}
+          postComment={props.postComment}
            dishId={props.dish.id}
            />
    
@@ -111,7 +111,7 @@ class CommentForm extends Component {
         }
 
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleSubmit = this.hadnleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     toggleModal() {
@@ -120,10 +120,10 @@ class CommentForm extends Component {
         });
     }
 
-    hadnleSubmit(values) {
+    handleSubmit(values) {
 
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
     render() {
@@ -136,7 +136,7 @@ class CommentForm extends Component {
                 <Modal isOpen={this.state.isModelOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
                     <ModalBody>
-                        <LocalForm onSubmit={(values) => this.hadnleSubmit(values)}>
+                        <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label for="rating" md={12}>rating</Label>
                                 <Col md={12}>
